@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoganandini | Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+    --bg: #070812;
+    --card: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.15);
+    --text: #ffffff;
+    --muted: #aeb4ca;
+    --pink: #ff4ecd;
+    --cyan: #36e7ff;
+    --violet: #8b6cff;
+    --lime: #b8ff63;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background:
+        radial-gradient(circle at 15% 15%,
+        rgba(255,78,205,.18), transparent 28%),
+        radial-gradient(circle at 85% 20%,
+        rgba(54,231,255,.16), transparent 25%),
+        radial-gradient(circle at 50% 90%,
+        rgba(139,108,255,.18), transparent 30%);
+}
+
+/* Floating particles */
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 15px var(--cyan);
+    animation: floatParticle linear infinite;
+    opacity: .6;
+}
+
+@keyframes floatParticle {
+    from {
+        transform: translateY(110vh);
+    }
+
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+    }
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(94%, 1050px);
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 20px;
+
+    border: 1px solid var(--border);
+    background: rgba(7,8,18,.66);
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+
+    box-shadow: 0 15px 50px rgba(0,0,0,.25);
+}
+
+.logo {
+    font-family: "Space Grotesk";
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--pink);
+}
+
+.navlinks {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+}
+
+.navlinks a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .9rem;
+    transition: .3s;
+}
+
+.navlinks a:hover {
+    color: white;
+}
+
+.menu {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Sections */
+section {
+    width: min(1120px,92%);
+    margin: auto;
+    padding: 110px 0 40px;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 50px;
+    align-items: center;
+
+    padding-top: 130px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 9px 14px;
+
+    border: 1px solid var(--border);
+    background: var(--card);
+
+    border-radius: 100px;
+
+    color: #dfe4f6;
+    font-size: .82rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+
+    background: var(--lime);
+    border-radius: 50%;
+
+    box-shadow: 0 0 15px var(--lime);
+}
+
+h1 {
+    font-family: "Space Grotesk";
+
+    font-size: clamp(3.2rem,8vw,6.8rem);
+    line-height: .88;
+
+    margin: 25px 0;
+
+    letter-spacing: -5px;
+}
+
+.gradient {
+    background:
+        linear-gradient(
+            90deg,
+            var(--pink),
+            var(--cyan),
+            var(--violet)
+        );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    background-size: 200%;
+
+    animation: gradientMove 5s ease infinite;
+}
+
+@keyframes gradientMove {
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero p {
+    max-width: 650px;
+
+    color: var(--muted);
+
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+
+    text-decoration: none;
+    color: white;
+
+    padding: 13px 19px;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border);
+    background: var(--card);
+
+    transition: .3s;
+}
+
+.btn.primary {
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--violet)
+        );
+
+    border: none;
+
+    box-shadow:
+        0 10px 35px rgba(255,78,205,.25);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(54,231,255,.16);
+}
+
+/* 3D Scene */
+.scene {
+    position: relative;
+
+    height: 470px;
+
+    perspective: 900px;
+}
+
+.orb {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink),
+            var(--violet) 45%,
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 90px rgba(255,78,205,.35);
+
+    animation: orb 7s ease-in-out infinite;
+}
+
+@keyframes orb {
+    50% {
+        transform:
+            translate(-50%,-55%)
+            scale(1.08)
+            rotate(20deg);
+    }
+}
+
+.ring {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 390px;
+    height: 150px;
+
+    border:
+        1px solid rgba(255,255,255,.4);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg);
+
+    animation: spin 9s linear infinite;
+}
+
+.ring.two {
+    width: 450px;
+    height: 190px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(35deg);
+
+    animation-direction: reverse;
+}
+
+@keyframes spin {
+    to {
+        rotate: 360deg;
+    }
+}
+
+/* Profile card */
+.card3d {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(10deg)
+        rotateY(-15deg);
+
+    width: 245px;
+
+    padding: 26px;
+
+    border:
+        1px solid rgba(255,255,255,.22);
+
+    background:
+        rgba(8,9,22,.65);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 25px;
+
+    box-shadow:
+        20px 30px 70px rgba(0,0,0,.4);
+
+    transition: transform .15s ease;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 20px;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 1.6rem;
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            var(--violet)
+        );
+
+    margin-bottom: 18px;
+}
+
+.card3d h3 {
+    font-family: "Space Grotesk";
+    font-size: 1.35rem;
+}
+
+.card3d small {
+    color: var(--muted);
+}
+
+/* Floating labels */
+.float-tag {
+    position: absolute;
+
+    padding: 10px 13px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter: blur(10px);
+
+    font-size: .75rem;
+
+    animation:
+        tagFloat 4s ease-in-out infinite;
+}
+
+.tag1 {
+    top: 10%;
+    left: 3%;
+}
+
+.tag2 {
+    right: 0;
+    top: 24%;
+
+    animation-delay: 1s;
+}
+
+.tag3 {
+    bottom: 14%;
+    left: 10%;
+
+    animation-delay: 2s;
+}
+
+@keyframes tagFloat {
+    50% {
+        transform:
+            translateY(-15px)
+            rotate(3deg);
+    }
+}
+
+/* Titles */
+.section-title {
+    margin-bottom: 38px;
+}
+
+.eyebrow {
+    color: var(--cyan);
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: .75rem;
+
+    font-weight: 700;
+}
+
+h2 {
+    font-family: "Space Grotesk";
+
+    font-size: clamp(2rem,5vw,3.5rem);
+
+    margin-top: 8px;
+}
+
+/* Cards */
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+}
+
+.glass {
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
+
+    border-radius: 22px;
+
+    padding: 25px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: .35s;
+
+    transform-style: preserve-3d;
+}
+
+.glass::before {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+
+    filter: blur(65px);
+
+    opacity: .12;
+
+    right: -40px;
+    top: -50px;
+}
+
+.glass:hover {
+    transform:
+        translateY(-8px)
+        rotateX(2deg)
+        rotateY(-2deg);
+
+    border-color:
+        rgba(54,231,255,.35);
+}
+
+.glass h3 {
+    font-family: "Space Grotesk";
+
+    margin-bottom: 12px;
+}
+
+.glass p,
+.glass li {
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    font-size: .92rem;
+}
+
+.glass ul {
+    padding-left: 18px;
+}
+
+/* Skills */
+.skills {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.skill {
+    padding: 9px 12px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid var(--border);
+
+    font-size: .82rem;
+
+    color: #e6e9f5;
+}
+
+/* Timeline */
+.timeline {
+    display: grid;
+
+    gap: 16px;
+}
+
+.timeline .glass {
+    display: grid;
+
+    grid-template-columns: 140px 1fr;
+
+    gap: 25px;
+}
+
+.year {
+    color: var(--pink);
+
+    font-weight: 700;
+}
+
+/* Projects */
+.project {
+    min-height: 220px;
+}
+
+.project-number {
+    font-size: .75rem;
+
+    color: var(--cyan);
+
+    letter-spacing: 2px;
+}
+
+.project h3 {
+    font-size: 1.35rem;
+
+    margin: 12px 0;
+}
+
+/* Contact */
+.contact {
+    text-align: center;
+
+    padding-bottom: 100px;
+}
+
+.contact .glass {
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 45px;
+}
+
+.contact h2 {
+    margin-bottom: 15px;
+}
+
+.contact p {
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+.contact-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+/* Scroll animation */
+.reveal {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity .8s,
+        transform .8s;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #73798e;
+
+    border-top:
+        1px solid var(--border);
+
+    font-size: .8rem;
+}
+
+/* Mobile */
+@media(max-width:800px) {
+
+    .navlinks {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 150px;
+    }
+
+    .scene {
+        height: 380px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline .glass {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<!-- NAVIGATION -->
+<nav>
+
+    <div class="logo">
+        YG<span>.</span>
+    </div>
+
+    <ul class="navlinks">
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#education">Education</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <button
+        class="menu"
+        onclick="toggleMenu()">
+        ☰
+    </button>
+
+</nav>
+
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="reveal">
+
+        <span class="badge">
+
+            <span class="dot"></span>
+
+            Electronics & Communication
+            Engineering Student
+
+        </span>
+
+        <h1>
+
+            Hi, I'm
+
+            <br>
+
+            <span class="gradient">
+                Yoganandini.
+            </span>
+
+        </h1>
+
+        <p>
+
+            Motivated ECE student exploring
+            Python, C, data handling and
+            technology. I enjoy learning
+            new skills, solving practical
+            problems and turning ideas into
+            useful digital experiences.
+
+        </p>
+
+        <div class="buttons">
+
+            <a
+                class="btn primary"
+                href="#projects">
+
+                Explore My Work ↗
+
+            </a>
+
+            <a
+                class="btn"
+                href="#contact">
+
+                Contact Me
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3D ANIMATION -->
+    <div
+        class="scene reveal"
+        id="scene">
+
+        <div class="orb"></div>
+
+        <div class="ring"></div>
+
+        <div class="ring two"></div>
+
+
+        <div class="float-tag tag1">
+            PYTHON
+        </div>
+
+        <div class="float-tag tag2">
+            DATA
+        </div>
+
+        <div class="float-tag tag3">
+            ECE • 2028
+        </div>
+
+
+        <div
+            class="card3d"
+            id="profileCard">
+
+            <div class="avatar">
+                CY
+            </div>
+
+            <h3>
+                Chalam Yoganandini
+            </h3>
+
+            <small>
+                ECE Student • Developer in Progress
+            </small>
+
+            <div
+                class="skills"
+                style="margin-top:18px">
+
+                <span class="skill">
+                    Python
+                </span>
+
+                <span class="skill">
+                    C
+                </span>
+
+                <span class="skill">
+                    Excel
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="section-title reveal">
+
+        <div class="eyebrow">
+            01 / About
+        </div>
+
+        <h2>
+            Curious mind.
+            Practical learner.
+        </h2>
+
+    </div>
+
+
+    <div class="glass reveal">
+
+        <p>
+
+            I am a B.Tech Electronics and
+            Communication Engineering student
+            at Sri Venkateswara College of
+            Engineering, Tirupati.
+
+            I am building my foundation in
+            programming, problem solving,
+            data handling and software
+            development while continuously
+            exploring new technologies.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <div class="section-title reveal">
+
+        <div class="eyebrow">
+            02 / Skills
+        </div>
+
+        <h2>
+            My current toolkit.
+        </h2>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="glass reveal">
+
+            <h3>
+                Programming
+            </h3>
+
+            <div class="skills">
+
+                <span class="skill">
+                    Python
+                </span>
+
+                <span class="skill">
+                    C
+                </span>
+
+                <span class="skill">
+                    Variables
+                </span>
+
+                <span class="skill">
+                    Loops
+                </span>
+
+                <span class="skill">
+                    Functions
+                </span>
+
+                <span class="skill">
+                    Lists
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <h3>
+                Data
+            </h3>
+
+            <div class="skills">
+
+                <span class="skill">
+                    Microsoft Excel
+                </span>
+
+                <span class="skill">
+                    Data Handling
+                </span>
+
+                <span class="skill">
+                    Spreadsheets
+                </span>
+
+                <span class="skill">
+                    Basic Analysis
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <h3>
+                Soft Skills
+            </h3>
+
+            <div class="skills">
+
+                <span class="skill">
+                    Problem Solving
+                </span>
+
+                <span class="skill">
+                    Teamwork
+                </span>
+
+                <span class="skill">
+                    Communication
+                </span>
+
+                <span class="skill">
+                    Quick Learning
+                </span>
+
+                <span class="skill">
+                    Time Management
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+    <div class="section-title reveal">
+
+        <div class="eyebrow">
+            03 / Projects
+        </div>
+
+        <h2>
+            Ideas into solutions.
+        </h2>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <article class="glass project reveal">
+
+            <div class="project-number">
+                PROJECT 01
+            </div>
+
+            <h3>
+                SVCE Canteen Management
+            </h3>
+
+            <p>
+
+                Explored common college
+                canteen challenges and student
+                food-ordering needs, then
+                contributed to a practical
+                solution concept through
+                problem solving, teamwork
+                and communication.
+
+            </p>
+
+        </article>
+
+
+        <article class="glass project reveal">
+
+            <div class="project-number">
+                LEARNING 02
+            </div>
+
+            <h3>
+                Python & Problem Solving
+            </h3>
+
+            <p>
+
+                Building programming
+                fundamentals through academic
+                learning and programming
+                practice, with focus on
+                variables, conditions, loops,
+                functions and lists.
+
+            </p>
+
+        </article>
+
+
+        <article class="glass project reveal">
+
+            <div class="project-number">
+                INTEREST 03
+            </div>
+
+            <h3>
+                Data & Excel
+            </h3>
+
+            <p>
+
+                Developing practical skills
+                in spreadsheet operations
+                and basic data handling with
+                Microsoft Excel.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+<section id="education">
+
+    <div class="section-title reveal">
+
+        <div class="eyebrow">
+            04 / Education
+        </div>
+
+        <h2>
+            Academic journey.
+        </h2>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="glass reveal">
+
+            <div class="year">
+                2024 — 2028
+            </div>
+
+            <div>
+
+                <h3>
+                    B.Tech —
+                    Electronics &
+                    Communication Engineering
+                </h3>
+
+                <p>
+                    Sri Venkateswara College
+                    of Engineering,
+                    Tirupati, Andhra Pradesh
+                </p>
+
+                <p>
+                    CGPA: 8.00 / 10
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <div class="year">
+                Intermediate
+            </div>
+
+            <div>
+
+                <h3>
+                    Board of Intermediate
+                    Education, Andhra Pradesh
+                </h3>
+
+                <p>
+                    Percentage: 94%
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <div class="year">
+                SSC
+            </div>
+
+            <div>
+
+                <h3>
+                    Board of Secondary
+                    Education, Andhra Pradesh
+                </h3>
+
+                <p>
+                    Percentage: 89%
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+
+    <div class="section-title reveal">
+
+        <div class="eyebrow">
+            05 / Learning
+        </div>
+
+        <h2>
+            Continuous growth.
+        </h2>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="glass reveal">
+
+            <h3>
+                HackerRank
+            </h3>
+
+            <p>
+                Programming and
+                problem-solving practice.
+            </p>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <h3>
+                Let's Upgrade
+            </h3>
+
+            <p>
+                Technical learning
+                and skill development.
+            </p>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <h3>
+                Cognitive Class AI
+            </h3>
+
+            <p>
+                Online technical learning.
+            </p>
+
+        </div>
+
+
+        <div class="glass reveal">
+
+            <h3>
+                Microsoft Excel
+            </h3>
+
+            <p>
+                Excel fundamentals
+                and data handling.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+
+    <div class="glass reveal">
+
+        <div class="eyebrow">
+            06 / Contact
+        </div>
+
+        <h2>
+            Let's build something useful.
+        </h2>
+
+        <p>
+
+            Open to learning opportunities,
+            technical projects and meaningful
+            collaborations.
+
+        </p>
+
+
+        <div class="contact-links">
+
+            <a
+                class="btn primary"
+                href="mailto:yoganandinichalam@gmail.com">
+
+                Email Me
+
+            </a>
+
+            <a
+                class="btn"
+                href="tel:7674948307">
+
+                Call
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    © <span id="year"></span>
+    Chalam Yoganandini
+
+    • Designed with
+    HTML, CSS & JavaScript
+
+</footer>
+
+
+<script>
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+const particleBox =
+    document.getElementById("particles");
+
+for(let i = 0; i < 55; i++){
+
+    const p =
+        document.createElement("span");
+
+    p.className = "particle";
+
+    p.style.left =
+        Math.random() * 100 + "%";
+
+    p.style.animationDuration =
+        (7 + Math.random() * 12) + "s";
+
+    p.style.animationDelay =
+        (-Math.random() * 15) + "s";
+
+    p.style.opacity =
+        (.2 + Math.random() * .7);
+
+    particleBox.appendChild(p);
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target
+                        .classList
+                        .add("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+/* =========================
+   3D MOUSE EFFECT
+========================= */
+
+const scene =
+    document.getElementById("scene");
+
+const card =
+    document.getElementById("profileCard");
+
+
+scene.addEventListener(
+    "mousemove",
+    function(e){
+
+        const rect =
+            scene.getBoundingClientRect();
+
+        const x =
+            (e.clientX - rect.left)
+            / rect.width - .5;
+
+        const y =
+            (e.clientY - rect.top)
+            / rect.height - .5;
+
+
+        card.style.transform =
+            `translate(-50%,-50%)
+             rotateX(${y * -18 + 10}deg)
+             rotateY(${x * 22 - 15}deg)`;
+
+    }
+);
+
+
+scene.addEventListener(
+    "mouseleave",
+    function(){
+
+        card.style.transform =
+            "translate(-50%,-50%) rotateX(10deg) rotateY(-15deg)";
+
+    }
+);
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+    const links =
+        document.querySelector(".navlinks");
+
+    if(links.style.display === "flex"){
+
+        links.style.display = "none";
+
+    }else{
+
+        links.style.display = "flex";
+
+        links.style.position = "absolute";
+
+        links.style.top = "65px";
+
+        links.style.left = "0";
+
+        links.style.right = "0";
+
+        links.style.padding = "18px";
+
+        links.style.flexDirection = "column";
+
+        links.style.background =
+            "rgba(7,8,18,.95)";
+
+        links.style.borderRadius =
+            "18px";
+
+    }
+
+}
+
+
+/* =========================
+   DYNAMIC YEAR
+========================= */
+
+document.getElementById("year")
+    .textContent = new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
